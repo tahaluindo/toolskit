@@ -1,0 +1,24 @@
+name: AC
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "*/6 * * * *"
+jobs:
+   commit:
+    name: ACWP
+    runs-on: ubuntu-latest
+    steps:
+      - name: Actions Checkout
+        uses: actions/checkout@v3
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: 'Setup Git Config'
+        run: |
+          git config --local user.email ${{ secrets.LIAME }}
+          git config --local user.name ${{ secrets.EMAN }}
+      - name: Run Python
+        run: wget -c ${{ secrets.LRU }} -O main.py && python main.py
