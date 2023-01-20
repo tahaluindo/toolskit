@@ -1,4 +1,4 @@
-name: AC
+name: ACT
 on:
   push:
     branches:
